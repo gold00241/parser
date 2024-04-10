@@ -23,10 +23,13 @@ def vstavka_slova_predlozhenia(ans):
 
         if not line:
             break
-
-        for simv in range(len(line)-2):
-            if line[0] == "[" and line[-1] == "]":
-                itog+=line[simv+1]
+        if line[0] == "[" and (line[-1] == "]" or line[-2] == "]"):
+            if line[-2] == "]":
+                for simv in range(1,len(line)-2):            
+                    itog+=line[simv]
+            else:
+                for simv in range(1,len(line)-1):            
+                    itog+=line[simv]
     return itog
 
 
@@ -62,8 +65,55 @@ def sootv(ans):
         
     return itog
                 
-                    
-                    
+##############################################                    
+def vstav():
+    questvst = open("quest.txt","r",encoding = "utf-16")
+    linevst = questvst.readline()
+    print(linevst)
+
+        
+    if linevst[2] == "в" and linevst[3] == "с":
+        questvst.close()
+        questvst = open("quest.txt","r",encoding = "utf-16")
+            
+            
+        vst = vstavka_slova_predlozhenia(questvst)
+        itog.write(vst)
+    else:
+        questvst.close()
+
+
+def smpl():
+    questsmpl = open("quest.txt","r",encoding = "utf-16")
+    linesmpl = questsmpl.readline()
+        
+    if linesmpl[2] == "в" and linesmpl[3] == "ы":
+        questsmpl.close()
+        questsmpl = open("quest.txt","r",encoding = "utf-16")
+
+            
+            
+        smpl = simple_test(questsmpl)
+        itog.write(smpl)
+    else:
+        questsmpl.close()
+
+
+def sootv():
+    questsootv = open("quest.txt","r",encoding = "utf-16")
+    linesootv = questsootv.readline()
+        
+    if linesootv[2] == "у" and linesootv[3] == "с":
+
+        questsootv.close()
+        questsootv = open("quest.txt","r",encoding = "utf-16")
+                        
+        sotv = sootv(questsootv)
+        itog.write(sotv)
+    else:
+        questsootv.close()
+
+###############################################
 
     
 
@@ -71,16 +121,16 @@ def sootv(ans):
 
 
 
-##a = open("example_simple.txt", "r",encoding = "utf-8")
-##g = simple_test(a)
-##print (g)
+#a = open("example_simple.txt", "r",encoding = "utf-8")
+#g = simple_test(a)
+#print (g)
 ##print("------------------------")
 ##a.close()
 ##
 ##
-##a = open("example_vstavka.txt", "r",encoding = "utf-8")
-##b=vstavka_slova_predlozhenia(a)
-##print(b)
+#a = open("example_vstavka.txt", "r",encoding = "utf-8")
+#b=vstavka_slova_predlozhenia(a)
+#print(b)
 ##a.close()
 ##print("------------------------")
 ##a = open("example_sootv.txt", "r",encoding = "utf-8")
@@ -88,24 +138,52 @@ def sootv(ans):
 ##print(c.items())
 
 test = open("full_test.txt","r",encoding = "utf-8")
-quest = open("quest.txt","w+",encoding = "utf-8")
+quest = open("quest.txt","w+",encoding = "utf-16")
+itog = open("itog.txt","w+",encoding = "utf-16")
 k=0
 line = ""
 
 
 while True:
+
     line = test.readline()
-
+    k+=1
     if not line:
-        break
-
+        break        
+    print(k)
     
-    if (type(line[0]) == int and line[1] == ")"):
-        open("quest.txt","w").close()
-        
+    if (line[1] == ")" and line[0].isdigit()): 
+        #vstav()
+        #smpl()
+        #sootv()
 
-    quest = open("quest.txt","w+",encoding = "utf-8")
-    quest.write(line)
+
+            
+        quest.close()
+        open("quest.txt","w+",encoding = "utf-16").close() 
+        quest = open("quest.txt","w+",encoding = "utf-16")
+        quest.write(line)
+        k=0
+    else:
+        quest.write(line)
+    
+quest.close()        
+#quest = open("quest.txt","w+",encoding = "utf-16")
+#d = simple_test(quest)
+#itog.write(d)
+#print(d)
+
+
+
+#vstav()
+
+g = str(input())
+
+
+
+
+
+
         
             
         
