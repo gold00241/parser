@@ -33,8 +33,7 @@ def vstavka_slova_predlozhenia(ans):
     return itog
 
 
-def sootv(ans):
-
+def sootv_func(ans):
     itog = {}
     simv = 0
 
@@ -69,30 +68,24 @@ def sootv(ans):
 def vstav():
     questvst = open("quest.txt","r",encoding = "utf-16")
     linevst = questvst.readline()
-    print(linevst)
-
-        
-    if linevst[2] == "в" and linevst[3] == "с":
+    
+    if linevst[2] == "В" and linevst[3] == "с":
         questvst.close()
         questvst = open("quest.txt","r",encoding = "utf-16")
-            
-            
         vst = vstavka_slova_predlozhenia(questvst)
         itog.write(vst)
     else:
         questvst.close()
 
 
+
 def smpl():
     questsmpl = open("quest.txt","r",encoding = "utf-16")
     linesmpl = questsmpl.readline()
         
-    if linesmpl[2] == "в" and linesmpl[3] == "ы":
+    if linesmpl[2] == "В" and linesmpl[3] == "ы":
         questsmpl.close()
         questsmpl = open("quest.txt","r",encoding = "utf-16")
-
-            
-            
         smpl = simple_test(questsmpl)
         itog.write(smpl)
     else:
@@ -103,13 +96,12 @@ def sootv():
     questsootv = open("quest.txt","r",encoding = "utf-16")
     linesootv = questsootv.readline()
         
-    if linesootv[2] == "у" and linesootv[3] == "с":
-
+    if linesootv[2] == "У" and linesootv[3] == "с":
         questsootv.close()
         questsootv = open("quest.txt","r",encoding = "utf-16")
-                        
-        sotv = sootv(questsootv)
-        itog.write(sotv)
+        sotv = sootv_func(questsootv)
+        for key, value in sotv.items():
+            itog.write(f"{key} == {value}\n")
     else:
         questsootv.close()
 
@@ -150,7 +142,7 @@ while True:
     k+=1
     if not line:
         break        
-    print(k)
+    
     
     if (line[1] == ")" and line[0].isdigit()): 
         #vstav()
