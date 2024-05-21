@@ -146,7 +146,7 @@ line = ""
 while True:
     g += 1
     line = test.readline()
-    print(line)
+    
     if not line:
         break
 
@@ -183,7 +183,6 @@ quest.close()
 # vstav()
 
 # g = str(input())
-
 
 
 
