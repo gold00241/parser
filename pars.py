@@ -150,7 +150,7 @@ while True:
     if not line:
         break
 
-    print(g)
+    
     if (line[1] == ")" and line[0].isdigit()) and k != 1:
         quest.close()
         vstav()
@@ -173,7 +173,7 @@ smpl()
 sootv()
 itog.write("\n")
 quest.close()
-print(g)
+
 # quest = open("quest.txt","w+",encoding = "utf-16")
 # d = simple_test(quest)
 # itog.write(d)
