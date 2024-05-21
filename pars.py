@@ -74,7 +74,7 @@ def vstav():
 
     linevst = questvst.readline()
 
-    if linevst[2] == "в" and linevst[3] == "с":
+    if linevst[2].lower() == "в" and linevst[3].lower() == "с":
         itog.write(linevst)
         questvst.close()
         questvst = open("quest.txt", "r", encoding="utf-16")
